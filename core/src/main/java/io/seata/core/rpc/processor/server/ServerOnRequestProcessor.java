@@ -119,6 +119,8 @@ public class ServerOnRequestProcessor implements RemotingProcessor, Disposable {
 
     @Override
     public void process(ChannelHandlerContext ctx, RpcMessage rpcMessage) throws Exception {
+        LOGGER.info("receive a req, body type:{}, detail:{}", rpcMessage.getBody().getClass().getSimpleName(),
+                rpcMessage.getBody());
         if (ChannelManager.isRegistered(ctx.channel())) {
             onRequestMessage(ctx, rpcMessage);
         } else {

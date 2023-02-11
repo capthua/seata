@@ -89,6 +89,7 @@ public class ServerOnResponseProcessor implements RemotingProcessor {
     }
 
     private void onResponseMessage(ChannelHandlerContext ctx, RpcMessage rpcMessage) {
+        LOGGER.info("get a response,{}",rpcMessage);
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug("server received:{},clientIp:{},vgroup:{}", rpcMessage.getBody(),
                 NetUtil.toIpAddress(ctx.channel().remoteAddress()),
