@@ -23,6 +23,11 @@ logging:
   config: classpath:logback-spring.xml
   file:
     path: ./logs/seata
+  level:
+    io.seata: debug
+    io.seata.core.rpc.netty.AbstractNettyRemoting: info
+    io.seata.core.rpc.processor.server.ServerHeartbeatProcessor: info
+
   extend:
     logstash-appender:
       destination: 127.0.0.1:4560
@@ -105,4 +110,3 @@ seata:
     tokenValidityInMilliseconds: 1800000
     ignore:
       urls: /,/**/*.css,/**/*.js,/**/*.html,/**/*.map,/**/*.svg,/**/*.png,/**/*.ico,/console-fe/public/**,/api/v1/auth/login
-debug: true
