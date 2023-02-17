@@ -321,7 +321,7 @@ public class DefaultCore implements Core {
                     switch (branchStatus) {
                         case PhaseTwo_Rollbacked:
                             SessionHelper.removeBranch(globalSession, branchSession, !retrying);
-                            LOGGER.info("Rollback branch transaction successfully, xid = {} branchId = {}", globalSession.getXid(), branchSession.getBranchId());
+                            LOGGER.info("Rollback branch transaction successfully, xid = {} branchId = {}, resourceId:{}", globalSession.getXid(), branchSession.getBranchId(),branchSession.getResourceId());
                             return CONTINUE;
                         case PhaseTwo_RollbackFailed_Unretryable:
                             SessionHelper.endRollbackFailed(globalSession, retrying);
