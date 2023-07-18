@@ -116,6 +116,7 @@ public class LockStoreDataBaseDAO implements LockStore {
         }
         try {
             conn = lockStoreDataSource.getConnection();
+            //将连接的自动提交属性值赋给 origin，然后将连接的设置为false，完了后将 origin 的值再赋给连接
             if (originalAutoCommit = conn.getAutoCommit()) {
                 conn.setAutoCommit(false);
             }
@@ -143,6 +144,7 @@ public class LockStoreDataBaseDAO implements LockStore {
                             long dbBranchId = rs.getLong(ServerTableColumnsName.LOCK_TABLE_BRANCH_ID);
                             LOGGER.info("Global lock on [{}:{}] is holding by xid {} branchId {}", dbTableName, dbPk, dbXID, dbBranchId);
                         }
+                        //如果 不是自动提交 且 状态是正在回滚，将 failFast设为 true
                         if (!autoCommit) {
                             int status = rs.getInt(ServerTableColumnsName.LOCK_TABLE_STATUS);
                             if (status == LockStatus.Rollbacking.getCode()) {
