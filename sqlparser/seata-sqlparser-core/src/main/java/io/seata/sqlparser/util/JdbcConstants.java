@@ -40,8 +40,6 @@ public interface JdbcConstants {
 
     String SQL_SERVER = "sqlserver";
 
-    String ALI_ORACLE = "AliOracle";
-
     String DERBY = "derby";
 
     String HBASE = "hbase";
@@ -75,10 +73,6 @@ public interface JdbcConstants {
     String KYLIN = "kylin";
 
     String SQLITE = "sqlite";
-
-    String ALIYUN_ADS = "aliyun_ads";
-
-    String ALIYUN_DRDS = "aliyun_drds";
 
     String PRESTO = "presto";
 
